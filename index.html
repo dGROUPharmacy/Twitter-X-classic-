@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Classic / X Demo - Andy Kieckhefer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .classic-theme { background-color: #f5f8fa; color: #14171a; }
+        .x-theme { background-color: #000000; color: #e7e9ea; }
+        .tweet { transition: all 0.2s; }
+    </style>
+</head>
+<body class="classic-theme font-sans">
+    <div class="max-w-7xl mx-auto flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 border-r p-4 flex flex-col">
+            <div class="flex items-center gap-2 mb-8">
+                <button onclick="toggleTheme()" class="text-3xl font-bold" id="logo">🐦</button>
+                <span class="text-xl font-bold" id="logo-text">Twitter</span>
+            </div>
+            <nav class="space-y-4">
+                <a href="#" class="flex items-center gap-4 text-xl py-3 px-4 hover:bg-blue-100 rounded-full"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#" class="flex items-center gap-4 text-xl py-3 px-4 hover:bg-blue-100 rounded-full"><i class="fa-solid fa-magnifying-glass"></i> Explore</a>
+                <a href="#" class="flex items-center gap-4 text-xl py-3 px-4 hover:bg-blue-100 rounded-full"><i class="fa-solid fa-bell"></i> Notifications</a>
+                <a href="#" class="flex items-center gap-4 text-xl py-3 px-4 hover:bg-blue-100 rounded-full"><i class="fa-solid fa-envelope"></i> Messages</a>
+                <a href="#" class="flex items-center gap-4 text-xl py-3 px-4 hover:bg-blue-100 rounded-full"><i class="fa-solid fa-user"></i> Profile</a>
+            </nav>
+            <button onclick="postTweet()" class="mt-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full">Tweet</button>
+        </div>
+
+        <!-- Feed -->
+        <div class="flex-1 border-r overflow-auto" id="feed">
+            <div class="sticky top-0 bg-white/90 backdrop-blur border-b p-4 flex justify-between items-center">
+                <h1 class="text-xl font-bold" id="header-title">Home</h1>
+                <button onclick="toggleTheme()" class="px-4 py-2 border rounded-full text-sm">Switch to X / Classic</button>
+            </div>
+            
+            <!-- Sample Tweets -->
+            <div class="tweet border-b p-4">
+                <div class="flex gap-4">
+                    <img src="https://pbs.twimg.com/profile_images/1677090954350583811/Xy93qVY4.jpg" class="w-12 h-12 rounded-full" alt="IBM">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold">@IBM</span>
+                            <span class="text-gray-500">@IBM · 2h</span>
+                        </div>
+                        <p>Weather and AI insights from IBM. Great for @IBMtwc strategy!</p>
+                        <div class="flex gap-8 mt-4 text-gray-500">
+                            <span><i class="fa-solid fa-comment"></i> 12</span>
+                            <span><i class="fa-solid fa-retweet"></i> 45</span>
+                            <span><i class="fa-solid fa-heart"></i> 230</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tweet border-b p-4">
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white text-2xl">☀️</div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold">@NationalWxDaily</span>
+                            <span class="text-gray-500">· 1h</span>
+                        </div>
+                        <p>National weather headline: Severe storms possible in Midwest. #wx #IBMtwc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="w-80 p-4 hidden lg:block">
+            <div class="bg-gray-100 rounded-3xl p-4 mb-4">
+                <h3 class="font-bold mb-4">Weather Trends</h3>
+                <div class="space-y-3 text-sm">
+                    <div>#wx</div>
+                    <div>#NationalWeather</div>
+                    <div>IBM Data & AI</div>
+                </div>
+            </div>
+            <div class="text-xs text-gray-500">Demo for Andy Kieckhefer Portfolio - Twitter/X Classic Toggle</div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const isClassic = body.classList.contains('classic-theme');
+            if (isClassic) {
+                body.classList.remove('classic-theme');
+                body.classList.add('x-theme');
+                document.getElementById('logo').innerHTML = '𝕏';
+                document.getElementById('logo-text').textContent = 'X';
+                document.getElementById('header-title').textContent = 'For you';
+            } else {
+                body.classList.remove('x-theme');
+                body.classList.add('classic-theme');
+                document.getElementById('logo').innerHTML = '🐦';
+                document.getElementById('logo-text').textContent = 'Twitter';
+                document.getElementById('header-title').textContent = 'Home';
+            }
+        }
+
+        function postTweet() {
+            alert("Demo Tweet posted! (In real app this would integrate with API)");
+        }
+
+        // Tailwind script already loaded
+    </script>
+</body>
+</html>
